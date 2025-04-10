@@ -60,6 +60,14 @@ function setup() {
 	
 	sliderFill = createSlider(0, 255, 128, .1) // min, max, default, stepSize
 	sliderFill.position(width/2, 25)
+	sliderFill.input(()=>{
+		localStorage.setItem('sliderFill', sliderFill.value()) // store current value in localstorage
+	}) // change slider
+
+	if(localStorage.hasOwnProperty('sliderFill')){
+		var storedValue = localStorage.getItem('sliderFill')
+		sliderFill.value(storedValue)
+	}
 }
 
 function draw() {
